@@ -1,0 +1,11 @@
+MK AI JOB ALERT SYSTEM
+
+Job Categories:
+
+1. Government Jobs
+2. Private Jobs
+3. International Jobs
+
+Purpose:
+Collect new job vacancy information from websites,
+verify official notifications, and prepare job alerts.
