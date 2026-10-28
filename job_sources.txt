@@ -1,11 +1,19 @@
-MK AI JOB ALERT SYSTEM
+MK AI Job Alert System
 
-Job Categories:
+Official recruitment sources
 
-1. Government Jobs
-2. Private Jobs
-3. International Jobs
+Government Jobs:
+https://ssc.gov.in/
+https://upsc.gov.in/
+https://www.rrbcdg.gov.in/
+https://www.ibps.in/
 
-Purpose:
-Collect new job vacancy information from websites,
-verify official notifications, and prepare job alerts.
+Private Jobs:
+https://www.naukri.com/
+https://www.linkedin.com/jobs/
+
+International Jobs:
+https://www.linkedin.com/jobs/
+https://www.indeed.com/
+
+Verify every vacancy on the employer's official website.
