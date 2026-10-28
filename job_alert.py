@@ -1,25 +1,42 @@
-from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urlparse
 
-def create_job_alert(title, organization, category, official_link):
-message = f"""
-🚨 MK AI JOB ALERT 🚨
+HEADERS = {
+"User-Agent": "Mozilla/5.0 (compatible; MKJobAlert/1.0)"
+}
 
-📢 भर्ती: {title}
-🏢 विभाग/कंपनी: {organization}
-🌍 श्रेणी: {category}
+def check_website(url):
+try:
+response = requests.get(
+url,
+headers=HEADERS,
+timeout=15
+)
+response.raise_for_status()
 
-🔗 आधिकारिक लिंक: {official_link}
+    soup = BeautifulSoup(response.text, "html.parser")
+    title = soup.title.get_text(" ", strip=True) if soup.title else urlparse(url).netloc
 
-⚠️ आवेदन करने से पहले आधिकारिक नोटिफिकेशन जरूर पढ़ें।
-🕒 अलर्ट तैयार: {datetime.now().strftime('%d-%m-%Y %H:%M')}
-"""
-return message
+    print(f"\nWebsite: {title}")
+    print(f"URL: {url}")
+    print("Website accessible: Yes")
+    print("Note: This checks website access only, not new vacancies.")
+
+except requests.RequestException as error:
+    print(f"\nWebsite: {url}")
+    print(f"Could not check: {error}")
+
+def main():
+with open("job_sources.txt", "r", encoding="utf-8") as file:
+urls = [
+line.strip()
+for line in file
+if line.strip().startswith("https://")
+]
+
+for url in urls:
+    check_website(url)
 
 if name == "main":
-alert = create_job_alert(
-title="उदाहरण भर्ती",
-organization="उदाहरण विभाग",
-category="सरकारी नौकरी",
-official_link="https://example.com"
-)
-print(alert)
+main()
